@@ -27,6 +27,18 @@ const Book = () => {
         newDates.checkOut = date
         setSelectedDate(newDates);
     };
+    const handleBooking = () => {
+        const newBooking = { ...loggedInUser, ...selectedDate }
+        fetch('http://localhost:5000/addBooking', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newBooking),
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+    }
     return (
         <div style={{ textAlign: 'center' }}>
             <h1> Hello,{loggedInUser.name}! Let's book a {bedType} Room.</h1>
@@ -59,7 +71,7 @@ const Book = () => {
                         }}
                     />
                 </Grid>
-                <Button variant="contained" color="secondary">Book Now</Button>
+                <Button onClick={handleBooking} variant="contained" color="secondary">Book Now</Button>
             </MuiPickersUtilsProvider>
         </div>
     );
