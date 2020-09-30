@@ -8,6 +8,8 @@ import {
     MuiPickersUtilsProvider,
     KeyboardDatePicker,
 } from '@material-ui/pickers';
+import Bookings from '../Bookings/Bookings';
+
 
 const Book = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -73,6 +75,7 @@ const Book = () => {
                 </Grid>
                 <Button onClick={handleBooking} variant="contained" color="secondary">Book Now</Button>
             </MuiPickersUtilsProvider>
+            <Bookings></Bookings>
         </div>
     );
 };
